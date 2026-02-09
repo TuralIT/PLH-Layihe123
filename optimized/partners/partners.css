@@ -1,0 +1,180 @@
+/* =============================================================================
+   PARTNERS PAGE - UNIQUE CSS (partners.css)
+   Page-specific styles only. Shared styles are in ../common/general.css
+   ============================================================================= */
+
+/* =============================================================================
+   1. HERO SECTION
+   ============================================================================= */
+.partners-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(9, 44, 58, 0.95), rgba(9, 44, 58, 0.85)), url('../../images/headerbg.svg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.partners-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(41, 169, 189, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* =============================================================================
+   2. PARTNER LOGO GRID SYSTEM
+   ============================================================================= */
+.partner-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  justify-items: center;
+  margin-top: 3rem;
+}
+
+.partner-logo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: var(--plh-radius-lg);
+  /* Initial hidden state for GSAP animation */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(40px);
+}
+
+.partner-logo-item img {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.partner-logo-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.partner-logo-item:hover {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =============================================================================
+   3. CLIENT TEXT CARDS
+   ============================================================================= */
+.client-text-card {
+  background: #ffffff;
+  border: 1px solid rgba(9, 44, 58, 0.25);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 180px;
+  border-radius: var(--plh-radius-lg);
+  transition: all 0.4s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.client-text-name {
+  font-family: var(--font-brand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--plh-base);
+  margin-bottom: 0.75rem;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.client-industry {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #4a5a63;
+  z-index: 2;
+  font-weight: 600;
+}
+
+.client-text-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(41, 169, 189, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.client-text-card:hover {
+  border-color: var(--plh-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(9, 44, 58, 0.12);
+}
+
+.client-text-card:hover::after {
+  opacity: 1;
+}
+
+.client-text-card:hover .client-text-name {
+  color: var(--plh-accent);
+}
+
+/* =============================================================================
+   4. RESPONSIVE ADJUSTMENTS
+   ============================================================================= */
+@media (max-width: 991px) {
+  .partner-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .partner-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .partner-logo-item {
+    padding: 1rem;
+  }
+  
+  .partner-logo-item img {
+    max-height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .partners-hero {
+      padding-top: 100px;
+      min-height: 40vh;
+  }
+}
