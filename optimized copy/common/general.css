@@ -333,7 +333,7 @@ a {
 
 /* Fluid Logo */
 .nav-logo {
-  height: clamp(50px, 4vw + 45px, 135px);
+  height: clamp(50px, 5.8vw + 35px, 135px);
   width: auto;
   transition: height 0.4s ease;
 }
@@ -343,7 +343,7 @@ a {
 
 /* Fluid Brand Divider */
 .brand-divider {
-  height: clamp(25px, 2vw + 15px, 55px);
+  height: clamp(25px, 2vw + 20px, 55px);
   width: 1px;
   background-color: rgba(255, 255, 255, 0.15);
   transition: height 0.4s ease;
@@ -358,7 +358,7 @@ a {
 .brand-text .brand-title {
   font-family: var(--font-brand);
   font-weight: 500;
-  font-size: clamp(1.1rem, 0.5vw + 1.2rem, 2rem);
+  font-size: clamp(1.1rem, 0.85vw + 1rem, 2rem);
   letter-spacing: 1px;
   line-height: 1;
   color: var(--plh-white);
@@ -372,6 +372,11 @@ a {
 .plh-nav.nav-scrolled .brand-text .brand-title {
   font-size: clamp(1rem, 0.3vw + 0.85rem, 1.4rem);
   padding-top: 0px;
+}
+
+/* navbar togler */
+.navbar-toggler {
+  padding: 0 !important;
 }
 
 /* Hide subtitle on compact viewports */
@@ -553,7 +558,7 @@ a {
 .brand-footer-text {
   font-family: var(--font-brand);
   font-weight: 500;
-  font-size: clamp(1.1rem, 0.5vw + 0.9rem, 1.6rem);
+  font-size: 1.42rem;
   color: var(--plh-white);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -562,7 +567,7 @@ a {
   width: auto;
   border-bottom: 2px solid var(--plh-white);
   margin-bottom: 5px;
-  margin-top: 15px;
+  margin-top: 18px;
   padding-bottom: 8px;
   line-height: 1.2;
 }
