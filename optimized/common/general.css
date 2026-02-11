@@ -333,7 +333,7 @@ a {
 }
 
 /* TIER 2: Standard Desktop (1440px - 1919px) */
-@media (min-width: 1440px) and (max-width: 1919px) {
+@media (min-width: 1440px) and (max-width: 1700px) {
   .plh-nav { padding: 28px 30px; }
   .nav-logo { height: 110px !important; }
   .brand-text .brand-title { font-size: 1.7rem !important; }
@@ -430,13 +430,50 @@ a {
   font-weight: 500;
   font-size: 1.35rem !important;
   padding: 10px 15px !important;
-  transition:
-    color 0.3s ease,
-    font-size 0.4s ease !important;
+  transition: color 0.3s ease,
+  font-size 0.4s ease !important;
 }
 .plh-nav.nav-scrolled .navbar-nav .nav-link {
   font-size: 1.15rem !important;
 }
+
+/* Redesigned Dropdown Styles */
+.plh-nav .dropdown-toggle::after {
+  display: none !important; /* Remove default bootstrap caret */
+}
+
+/* Custom Dropdown Indicator Icon */
+.dropdown-indicator {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+  transform: translateX(-5px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 0.8em;
+  margin-left: 0;
+}
+
+/* Show icon on hover (Desktop only) */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-indicator {
+    opacity: 1;
+    width: auto;
+    transform: translateX(0);
+    margin-left: 5px;
+  }
+  
+  /* Make dropdown active on hover */
+  .nav-item.dropdown:hover .dropdown-menu,
+  .nav-utilities .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* Ensure link color changes on hover */
 @media (hover: hover) {
 .navbar-nav .nav-link:hover {
   color: var(--plh-accent) !important;
@@ -481,6 +518,18 @@ a {
   pointer-events: none;
   transform: translateY(10px);
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Fix for hover gap: Transparent bridge */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  display: block;
 }
 
 .dropdown-menu.show {
