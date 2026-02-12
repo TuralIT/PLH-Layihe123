@@ -165,11 +165,26 @@ PROBIZ.processPinning = (function() {
 // =============================================================================
 PROBIZ.testimonials = (function() {
     const init = () => {
+        if (typeof gsap === 'undefined') return;
+
         const tracks = document.querySelectorAll('.marquee-track-right');
         
         tracks.forEach(track => {
-            const clone = track.innerHTML;
-            track.innerHTML += clone; // Duplicate for seamless loop
+            const originalContent = track.innerHTML;
+            track.innerHTML = originalContent + originalContent + originalContent + originalContent; // 4x total
+
+            // Hybrid Approach: Calculate the exact width of ONE set (1/4th of total)
+            // and pass it to CSS. This allows the CSS track to be 'width: auto' (not huge) 
+            // while still animating the correct distance.
+            const setMarqueeDistance = () => {
+                const totalWidth = track.scrollWidth;
+                const oneSetWidth = totalWidth / 4;
+                track.style.setProperty('--marquee-end', `-${oneSetWidth}px`);
+            };
+
+            // Calculate immediately and on resize
+            setMarqueeDistance();
+            window.addEventListener('resize', setMarqueeDistance);
         });
     };
 

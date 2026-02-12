@@ -20,19 +20,37 @@
 
 /* Hero Slide Backgrounds */
 .class-to-animate-hero {
-  background: linear-gradient(135deg, rgba(13, 59, 76, 0.75) 0%, rgba(6, 30, 40, 0.75) 100%), url('../images/Carusel1.png');
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 59, 76, 0.75) 0%,
+      rgba(6, 30, 40, 0.75) 100%
+    ),
+    url("../images/Carusel1.png");
   background-size: cover;
   background-position: center;
 }
 
 .slide-2-bg {
-  background: linear-gradient(135deg, rgba(13, 59, 76, 0.75) 0%, rgba(6, 30, 40, 0.75) 100%), url('../images/Carusel2.png');
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 59, 76, 0.75) 0%,
+      rgba(6, 30, 40, 0.75) 100%
+    ),
+    url("../images/Carusel2.png");
   background-size: cover;
   background-position: center;
 }
 
 .slide-3-bg {
-  background: linear-gradient(135deg, rgba(13, 59, 76, 0.75) 0%, rgba(6, 30, 40, 0.75) 100%), url('../images/Carules3Test.png');
+  background:
+    linear-gradient(
+      135deg,
+      rgba(13, 59, 76, 0.75) 0%,
+      rgba(6, 30, 40, 0.75) 100%
+    ),
+    url("../images/Carules3Test.png");
   background-size: cover;
   background-position: center top;
 }
@@ -67,21 +85,28 @@
   .bento-grid {
     grid-template-columns: repeat(12, 1fr);
   }
-  .bento-span-4 { grid-column: span 4; }
-  .bento-span-8 { grid-column: span 8; }
-  .bento-span-6 { grid-column: span 6; }
+  .bento-span-4 {
+    grid-column: span 4;
+  }
+  .bento-span-8 {
+    grid-column: span 8;
+  }
+  .bento-span-6 {
+    grid-column: span 6;
+  }
 }
 
 /* Dark Bento Theme */
 .bento-dark {
   background: var(--plh-base) !important;
   color: var(--plh-white) !important;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .bento-dark p {
-  color: rgba(255,255,255,0.75) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
-.bento-dark h3, .bento-dark h4 {
+.bento-dark h3,
+.bento-dark h4 {
   color: var(--plh-white) !important;
 }
 
@@ -172,33 +197,54 @@
 .marquee-wrapper {
   width: 100%;
   overflow: hidden;
+  /* Premium Fade Effect */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-track-right {
   display: flex;
-  gap: 30px;
   padding: 20px 0;
-  animation: scroll-right 25s linear infinite;
+  width: auto; /* Allow track to be naturally sized, or strictly 100% */
+  min-width: 100%;
+  will-change: transform; 
+  animation: scroll-right 40s linear infinite; /* Faster for Desktop (User requested) */
 }
+
+@media (max-width: 768px) {
+  .marquee-track-right {
+    animation-duration: 40s !important; /* Slower for Mobile (User requested) */
+  }
+}
+
+/* Pause on Hover */
+.marquee-track-right:hover {
+  animation-play-state: paused;
+}
+
 @keyframes scroll-right {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    /* Fallback to -25% if JS fails, but JS will override this with pixel value */
+    transform: translateX(var(--marquee-end, -25%));
   }
 }
 
 .review-glass-card {
-  min-width: min(100%, 350px);
+  flex-shrink: 0; /* CRITICAL: Prevent cards from squashing */
+  min-width: 220px; /* Thinner for mobile */
+  max-width: 350px; /* User requested ideal size */
   background: #ffffff;
   border: 1px solid #eef2f3;
-  padding: clamp(24px, 2vw + 15px, 40px);
+  padding: 20px; /* Cleaned up padding */
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 40px rgba(13, 59, 76, 0.05);
   border-radius: 4px;
   transition: 0.3s;
+  margin-right: 30px; /* Added margin for smooth loop calculation */
 }
 @media (hover: hover) {
   .review-glass-card:hover {
@@ -220,23 +266,6 @@
   letter-spacing: 1px;
   color: var(--plh-accent);
   font-weight: 600;
-}
-
-/* =============================================================================
-   6. WATERMARK BACKGROUND
-   ============================================================================= */
-.bg-watermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(10rem, 30vw + 5rem, 60rem);
-  font-weight: 900;
-  color: rgba(41, 169, 189, 0.07);
-  z-index: 0;
-  font-family: var(--font-brand);
-  pointer-events: none;
-  letter-spacing: -20px;
 }
 
 /* =============================================================================
@@ -346,14 +375,17 @@
 /* Very Small Mobile Specific */
 @media (max-width: 374px) {
   /* Full Width Buttons for easier touch */
-  .slide-btns .btn { 
-    width: 100%; 
-    display: block; 
-    margin-bottom: 10px; 
+  .slide-btns .btn {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
   }
-  
+
   /* Tighter Content Padding */
-  .bento-item, .protocol-content { padding: 20px !important; }
+  .bento-item,
+  .protocol-content {
+    padding: 20px !important;
+  }
 }
 
 /* =============================================================================
@@ -364,203 +396,205 @@
 .bento-business,
 .bento-personal,
 .bento-light {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 @media (hover: hover) {
-.bento-business:hover,
-.bento-personal:hover,
-.bento-light:hover {
+  .bento-business:hover,
+  .bento-personal:hover,
+  .bento-light:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 50px rgba(13, 59, 76, 0.25);
-}
+  }
 
-/* Specific Shadow for Light Cards */
-.bento-light:hover {
+  /* Specific Shadow for Light Cards */
+  .bento-light:hover {
     box-shadow: 0 20px 40px rgba(13, 59, 76, 0.08);
     border-color: var(--plh-accent);
-}
+  }
 }
 
 .bento-content {
-    transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 @media (hover: hover) {
-.bento-business:hover .bento-content,
-.bento-personal:hover .bento-content,
-.bento-light:hover .bento-content {
+  .bento-business:hover .bento-content,
+  .bento-personal:hover .bento-content,
+  .bento-light:hover .bento-content {
     transform: translateY(-5px); /* Move content up on hover */
-}
+  }
 }
 
 .icon-box {
-    width: 50px;
-    height: 50px;
-    background: rgba(41, 169, 189, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(41, 169, 189, 0.05);
-    transition: all 0.4s ease;
+  width: 50px;
+  height: 50px;
+  background: rgba(41, 169, 189, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(41, 169, 189, 0.05);
+  transition: all 0.4s ease;
 }
 
 @media (hover: hover) {
-.bento-business:hover .icon-box,
-.bento-personal:hover .icon-box {
+  .bento-business:hover .icon-box,
+  .bento-personal:hover .icon-box {
     background: rgba(41, 169, 189, 0.2);
     box-shadow: 0 0 20px rgba(41, 169, 189, 0.2);
     border-color: rgba(41, 169, 189, 0.3);
-}
+  }
 }
 
 /* --- Card 1 & 2: The Deep Atmosphere (Business & Personal) --- */
 .bento-business,
 .bento-personal {
-    background: radial-gradient(circle at top right, #133b4b 0%, #092c3a 100%);
-    position: relative;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.3); /* Inner depth */
+  background: radial-gradient(circle at top right, #133b4b 0%, #092c3a 100%);
+  position: relative;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3); /* Inner depth */
 }
 
 /* Specific styling for Personal card to differentiate slightly (optional) or keep identical */
 .bento-personal {
-    /* Identical base, but we can shift gradient if needed. For now, matching exactly as requested. */
-    background: radial-gradient(circle at top left, #133b4b 0%, #092c3a 100%); /* Light source from left for variety */
+  /* Identical base, but we can shift gradient if needed. For now, matching exactly as requested. */
+  background: radial-gradient(
+    circle at top left,
+    #133b4b 0%,
+    #092c3a 100%
+  ); /* Light source from left for variety */
 }
 
-
 .bento-grid-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Replaced Grid with Noise Texture for "Deep Atmosphere" look */
-    background-size: cover;
-    opacity: 0.4;
-    z-index: 1;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    mix-blend-mode: overlay;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Replaced Grid with Noise Texture for "Deep Atmosphere" look */
+  background-size: cover;
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  mix-blend-mode: overlay;
 }
 
 @media (hover: hover) {
-.bento-business:hover .bento-grid-overlay,
-.bento-personal:hover .bento-grid-overlay {
+  .bento-business:hover .bento-grid-overlay,
+  .bento-personal:hover .bento-grid-overlay {
     opacity: 0.6;
-}
+  }
 }
 
 .bento-glow {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(to top, rgba(41, 169, 189, 0.15), transparent);
-    opacity: 0.5;
-    transition: all 0.6s ease;
-    z-index: 0;
-    pointer-events: none;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, rgba(41, 169, 189, 0.15), transparent);
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  z-index: 0;
+  pointer-events: none;
 }
 
 @media (hover: hover) {
-.bento-business:hover .bento-glow,
-.bento-personal:hover .bento-glow {
+  .bento-business:hover .bento-glow,
+  .bento-personal:hover .bento-glow {
     opacity: 0.8;
     height: 200px;
-}
+  }
 }
 
 .bento-link i {
-    transition: transform 0.3s ease;
-    display: inline-block;
+  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
 @media (hover: hover) {
-.bento-business:hover .bento-link i {
+  .bento-business:hover .bento-link i {
     transform: translateX(5px);
-}
+  }
 }
 
 /* Button outline white override for the personal card */
 .bento-personal .btn-outline-white {
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.85rem;
-    padding: 10px 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.85rem;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @media (hover: hover) {
-.bento-personal .btn-outline-white:hover {
+  .bento-personal .btn-outline-white:hover {
     background: white;
     color: var(--plh-base);
     border-color: white;
-}
+  }
 }
 
 /* --- White Items: The Porcelain Look --- */
 .bento-light {
-    background: linear-gradient(145deg, #ffffff 0%, #f4f6f7 100%) !important;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.5s ease;
+  background: linear-gradient(145deg, #ffffff 0%, #f4f6f7 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease;
 }
 
 /* --- White Items: The Porcelain Look with Icon Box --- */
 .bento-light {
-    background: linear-gradient(145deg, #ffffff 0%, #f4f6f7 100%) !important;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.5s ease;
+  background: linear-gradient(145deg, #ffffff 0%, #f4f6f7 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease;
 }
 
 @media (hover: hover) {
-.bento-light:hover {
+  .bento-light:hover {
     /* Subtle background shift on hover */
     background: linear-gradient(145deg, #ffffff 0%, #e8ecef 100%) !important;
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
     border-color: var(--plh-accent);
-}
+  }
 }
 
 .bento-light .bento-icon-box {
-    width: 60px;
-    height: 60px;
-    background: rgba(41, 169, 189, 0.1); /* Light tint of accent color */
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-    transition: 0.3s;
+  width: 60px;
+  height: 60px;
+  background: rgba(41, 169, 189, 0.1); /* Light tint of accent color */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  transition: 0.3s;
 }
 
 .bento-light .bento-icon-box i {
-    font-size: 1.75rem;
-    color: var(--plh-accent);
-    transition: color 0.3s ease;
+  font-size: 1.75rem;
+  color: var(--plh-accent);
+  transition: color 0.3s ease;
 }
 
 @media (hover: hover) {
-.bento-light:hover .bento-icon-box {
+  .bento-light:hover .bento-icon-box {
     background: var(--plh-accent);
-}
+  }
 
-.bento-light:hover .bento-icon-box i {
+  .bento-light:hover .bento-icon-box i {
     color: white;
-}
+  }
 }
 
 .bento-light h4 {
-    transition: color 0.3s ease;
-    color: var(--plh-base);
+  transition: color 0.3s ease;
+  color: var(--plh-base);
 }
-
 
 /* =============================================================================
    9. ECOSYSTEM SECTION CARDS
@@ -746,23 +780,61 @@
 }
 
 /* =============================================================================
-   10. CLIENT SHOWCASE
+   10. CLIENT SHOWCASE (INFINITE LOOP CAROUSEL)
    ============================================================================= */
-.client-logo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(12px, 1.5vw + 6px, 24px);
+.client-carousel-mask {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Foggy edges effect */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.client-carousel-track {
+  display: flex;
+  gap: clamp(20px, 2vw + 10px, 40px);
+  width: max-content;
+  /* Adjust duration based on number of items */
+  animation: scroll-left 40s linear infinite;
+  padding: 20px 0; /* Space for shadow/hover lift */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Move by 50% because we duplicated the content. 
+       This assumes the two sets are identical. */
+    transform: translateX(-50%);
+  }
 }
 
 .client-logo-item {
+  flex: 0 0 auto;
+  width: clamp(140px, 15vw, 200px); /* Fixed width for consistent spacing */
+  height: clamp(80px, 8vw, 100px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(20px, 2vw + 10px, 36px) clamp(16px, 1.5vw + 8px, 28px);
+  padding: 20px;
   background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--plh-radius-lg);
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .client-logo-item img {
@@ -772,15 +844,21 @@
   object-fit: contain;
   filter: grayscale(100%);
   opacity: 0.55;
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s ease;
 }
 
-@media (hover: hover) {
+/* Hover Effects */
+  /* Pause animation on hover for easier viewing */
+  .client-carousel-track:hover {
+    animation-play-state: paused;
+  }
+
   .client-logo-item:hover {
     transform: translateY(-4px);
     border-color: rgba(41, 169, 189, 0.3);
-    box-shadow: 0 12px 35px rgba(13, 59, 76, 0.08),
-                0 0 0 1px rgba(41, 169, 189, 0.1);
+    box-shadow:
+      0 12px 35px rgba(13, 59, 76, 0.08),
+      0 0 0 1px rgba(41, 169, 189, 0.1);
     background: linear-gradient(145deg, #ffffff 0%, #f0f7f8 100%);
   }
 
@@ -788,22 +866,17 @@
     filter: grayscale(0%);
     opacity: 1;
   }
-}
 
-/* Tablet: 3 columns */
-@media (max-width: 991px) {
-  .client-logo-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
-/* Mobile: 2 columns */
+/* Mobile Adjustments */
 @media (max-width: 575px) {
-  .client-logo-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .client-logo-item {
+    width: 120px;
+    height: 70px;
+    padding: 15px;
   }
 
   .client-logo-item img {
-    max-height: 36px;
+    max-height: 32px;
   }
 }
