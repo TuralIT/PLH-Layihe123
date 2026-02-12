@@ -561,4 +561,249 @@
     color: var(--plh-base);
 }
 
-/* Header hover effect removed per user request "instead of making header... blue" */
+
+/* =============================================================================
+   9. ECOSYSTEM SECTION CARDS
+   ============================================================================= */
+.eco-card {
+  position: relative;
+  border-radius: var(--plh-radius-lg);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 100%;
+}
+
+.eco-card-inner {
+  position: relative;
+  z-index: 2;
+  padding: clamp(28px, 2vw + 18px, 40px);
+}
+
+/* Legal Card */
+.eco-card-legal {
+  background: radial-gradient(circle at top right, #133b4b 0%, #092c3a 100%);
+  border: 1px solid rgba(41, 169, 189, 0.15);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Accounting Card */
+.eco-card-accounting {
+  background: radial-gradient(circle at top left, #2a2415 0%, #1a1810 100%);
+  border: 1px solid rgba(200, 160, 70, 0.15);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.2);
+}
+
+@media (hover: hover) {
+  .eco-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .eco-card-legal:hover {
+    border-color: rgba(41, 169, 189, 0.4);
+  }
+
+  .eco-card-accounting:hover {
+    border-color: rgba(200, 160, 70, 0.4);
+  }
+}
+
+/* Icon */
+.eco-card-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(41, 169, 189, 0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.4s ease;
+}
+
+.eco-card-icon i {
+  font-size: 1.6rem;
+  color: var(--plh-accent);
+}
+
+.eco-icon-accounting {
+  background: rgba(200, 160, 70, 0.12) !important;
+}
+
+.eco-icon-accounting i {
+  color: #c8a046 !important;
+}
+
+@media (hover: hover) {
+  .eco-card-legal:hover .eco-card-icon {
+    background: rgba(41, 169, 189, 0.25);
+    box-shadow: 0 0 25px rgba(41, 169, 189, 0.2);
+  }
+
+  .eco-card-accounting:hover .eco-icon-accounting {
+    background: rgba(200, 160, 70, 0.25);
+    box-shadow: 0 0 25px rgba(200, 160, 70, 0.2);
+  }
+}
+
+/* Title */
+.eco-card-title {
+  color: var(--plh-white) !important;
+  font-size: clamp(1.3rem, 0.8vw + 1rem, 1.75rem);
+  margin-bottom: 0.75rem;
+}
+
+/* Description */
+.eco-card-desc {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Tags */
+.eco-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.75rem;
+}
+
+.eco-tag {
+  font-size: 0.78rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(41, 169, 189, 0.1);
+  color: var(--plh-accent);
+  border: 1px solid rgba(41, 169, 189, 0.15);
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.eco-tag-acc {
+  background: rgba(200, 160, 70, 0.1) !important;
+  color: #c8a046 !important;
+  border-color: rgba(200, 160, 70, 0.15) !important;
+}
+
+/* CTA Link */
+.eco-card-cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--plh-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.eco-cta-accounting {
+  color: #c8a046 !important;
+}
+
+@media (hover: hover) {
+  .eco-card-cta:hover {
+    gap: 4px;
+  }
+
+  .eco-card-cta:hover i {
+    transform: translateX(4px);
+  }
+}
+
+.eco-card-cta i {
+  transition: transform 0.3s ease;
+}
+
+/* Glow Effects */
+.eco-card-glow {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.eco-glow-legal {
+  background: linear-gradient(to top, rgba(41, 169, 189, 0.2), transparent);
+}
+
+.eco-glow-accounting {
+  background: linear-gradient(to top, rgba(200, 160, 70, 0.2), transparent);
+}
+
+@media (hover: hover) {
+  .eco-card:hover .eco-card-glow {
+    opacity: 0.7;
+    height: 160px;
+  }
+}
+
+/* =============================================================================
+   10. CLIENT SHOWCASE
+   ============================================================================= */
+.client-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.5vw + 6px, 24px);
+}
+
+.client-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 2vw + 10px, 36px) clamp(16px, 1.5vw + 8px, 28px);
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--plh-radius-lg);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.client-logo-item img {
+  max-height: 48px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@media (hover: hover) {
+  .client-logo-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(41, 169, 189, 0.3);
+    box-shadow: 0 12px 35px rgba(13, 59, 76, 0.08),
+                0 0 0 1px rgba(41, 169, 189, 0.1);
+    background: linear-gradient(145deg, #ffffff 0%, #f0f7f8 100%);
+  }
+
+  .client-logo-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+}
+
+/* Tablet: 3 columns */
+@media (max-width: 991px) {
+  .client-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 575px) {
+  .client-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .client-logo-item img {
+    max-height: 36px;
+  }
+}

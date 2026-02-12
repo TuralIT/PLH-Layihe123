@@ -56,6 +56,7 @@
               </ul>
             </li>
             <li class="nav-item"><a class="nav-link active" href="team.html">Komandamız</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#ecosystemPanel" aria-controls="ecosystemPanel">Bölmələrimiz</a></li>
             <li class="nav-item"><a class="nav-link" href="#footer-contact-title">Əlaqə</a></li>
           </ul>
 
@@ -328,13 +329,21 @@
             </div>
             <p class="opacity-75">Bakıdakı etibarlı hüquq tərəfdaşınız. Biz Azərbaycanın gələcəyini formalaşdıran insanları və biznesləri müdafiə edirik.</p>
           </div>
-          <div class="col-6 col-lg-2 offset-lg-1">
+          <div class="col-6 col-lg-2">
             <h6 class="text-accent text-caps mb-3 small">Şirkət</h6>
             <ul class="list-unstyled text-white opacity-75">
               <li class="mb-2"><a href="../about/about.html" class="text-white text-decoration-none footer-link-anim">Haqqımızda</a></li>
               <li class="mb-2"><a href="team.html" class="text-white text-decoration-none footer-link-anim">Komandamız</a></li>
               <li class="mb-2"><a href="#services" class="text-white text-decoration-none footer-link-anim">Xidmətlərimiz</a></li>
             </ul>
+          </div>
+          <div class="col-6 col-lg-2 footer-partner-col">
+            <h6 class="text-accent text-caps mb-3 small">Tərəfdaş</h6>
+            <a href="#" target="_blank" rel="noopener" class="partner-link-item">
+              <i class="bi bi-calculator"></i>
+              Probiz Accounting
+              <i class="bi bi-box-arrow-up-right partner-ext-icon"></i>
+            </a>
           </div>
           <div class="col-lg-3">
             <h6 id="footer-contact-title" class="text-accent text-caps mb-3 small">Əlaqə</h6>
@@ -367,6 +376,67 @@
         </div>
       </div>
     </footer>
+
+    <!-- Ecosystem Offcanvas Panel -->
+    <div class="offcanvas offcanvas-end ecosystem-offcanvas" tabindex="-1" id="ecosystemPanel" aria-labelledby="ecosystemPanelLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="ecosystemPanelLabel"><i class="bi bi-grid-3x3-gap-fill me-2"></i> Bölmələrimiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Bağla"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p class="eco-subtitle">Probiz ekosistemi — hüquq və maliyyə sahələrində tam xidmət təqdim edən tərəfdaş şirkətlər qrupu.</p>
+
+        <!-- Legal Hub Division -->
+        <div class="division-card">
+          <div class="division-header">
+            <div class="division-icon icon-legal"><i class="bi bi-shield-check"></i></div>
+            <div>
+              <h4 class="division-name">Probiz Legal Hub</h4>
+              <span class="division-badge badge-current">Hazırda Buradasınız</span>
+            </div>
+          </div>
+          <p class="division-desc">Korporativ hüquq, əmlak mübahisələri və məhkəmə təmsilçiliyi üzrə peşəkar hüquqi xidmətlər.</p>
+          <div class="division-services">
+            <span class="service-tag">Korporativ Hüquq</span>
+            <span class="service-tag">Əmlak</span>
+            <span class="service-tag">Əqli Mülkiyyət</span>
+            <span class="service-tag">Məhkəmə</span>
+          </div>
+          <a href="../about/about.html" class="division-cta cta-legal">
+            Haqqımızda <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Accounting Division -->
+        <div class="division-card">
+          <div class="division-header">
+            <div class="division-icon icon-accounting"><i class="bi bi-calculator"></i></div>
+            <div>
+              <h4 class="division-name">Probiz Accounting</h4>
+              <span class="division-badge badge-partner">Tərəfdaş Şirkət</span>
+            </div>
+          </div>
+          <p class="division-desc">Mühasibat uçotu, vergi planlaşdırması və maliyyə auditi sahələrində peşəkar xidmətlər.</p>
+          <div class="division-services">
+            <span class="service-tag">Mühasibatlıq</span>
+            <span class="service-tag">Vergi</span>
+            <span class="service-tag">Audit</span>
+            <span class="service-tag">Məsləhət</span>
+          </div>
+          <a href="#" target="_blank" rel="noopener" class="division-cta cta-accounting">
+            Sayta Keçin <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </div>
+
+        <!-- Contact Bar -->
+        <div class="eco-contact-bar">
+          <p>Hansı xidmətə ehtiyacınız olduğundan əmin deyilsiniz?</p>
+          <a href="tel:+994553280818" class="btn btn-accent btn-sm w-100">
+            <i class="bi bi-telephone-fill me-2"></i> Bizimlə Əlaqə Saxlayın
+          </a>
+        </div>
+      </div>
+    </div>
 
     <div class="mobile-whatsapp-sticky d-md-none">
         <a href="tel:+994553280818" class="sticky-cta-btn btn-call">
